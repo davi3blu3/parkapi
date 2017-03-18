@@ -31,7 +31,7 @@ function handleError(res, reason, message, code) {
 }
 
 // API Route
-app.get("/api/parks", function(req, res) {
+app.get("/api/parks.json", function(req, res) {
     db.collection(PARKS_COLLECTION).find({}).toArray(function(err, docs) {
         if (err) {
             handleError(res, err.message, "Failed to retrieve parks.");
