@@ -24,4 +24,19 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function(err, database){
     })
 })
 
+// Error handler
+function handleError(res, reason, message, code) {
+    console.log("ERROR: ", reason);
+    res.status(code || 500).json({"error": message});
+}
+
 // API Route
+app.get("/api/parks", function(req, res) {
+    db.collection(PARKS_COLLECTION).find({}).toArray(function(err, docs) {
+        if (err) {
+            handleError(res, err.message, "Failed to retrieve parks.");
+        } else {
+            res.status(200).json(docs);
+        }
+    })
+})
