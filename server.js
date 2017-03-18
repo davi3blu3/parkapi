@@ -44,5 +44,3 @@ app.get("/api/parks", function(req, res) {
 // app.post("api/parks", function(req, res) {
 //     db.collection(PARKS_COLLECTION).insertMany
 // }
-
-)
